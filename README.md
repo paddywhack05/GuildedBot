@@ -1,1 +1,1 @@
-# GuoldedBot
+# GuildedBot
