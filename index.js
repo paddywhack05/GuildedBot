@@ -4,7 +4,7 @@ const commands = require(`./command.js`);
 const utils = require(`./utils.js`);
 const client = utils.log.login(token)
 client.on('open', async function() {
-  console.log('connected to Guilded!',client);
+  //console.log('connected to Guilded!',client);
 });
 client.on('message', async (data) => {
   const json = JSON.parse(data);
