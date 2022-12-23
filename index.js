@@ -35,6 +35,9 @@ client.on('message', async (data) => {
                 if(message.content.toLowerCase()=="%dog"){
                   commands.dog.execute(message,client);
                   }
+                  if(message.content.toLowerCase()=="%help"){
+                    commands.help.execute(message,client);
+                    }
             if(message.content.toLowerCase().startsWith("%pokemon")){
               const text = message.content.split(' ')[1]
               commands.pokemon.execute(message,client,text);
