@@ -2,7 +2,19 @@ require("dotenv").config()
 const token = process.env.TOKEN;
 const commands = require(`./command.js`);
 const utils = require(`./utils.js`);
+const http = require('http');
 const client = utils.log.login(token)
+const server = http.createServer((req,res)=>{ 
+  res.statusCode=200;
+  res.setHeader('Content-Type', 'text/plain')
+  res.end("Welcome to Geeks For Geeks")
+});
+const port = 1000;
+const hostname = 'localhost';
+server.listen(port,hostname,()=>{
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+
 client.on('open', async function() {
   //console.log('connected to Guilded!',client);
 });
