@@ -47,6 +47,10 @@ client.on('message', async (data) => {
               const text = message.content.split(' ')[1]
               commands.pokemon.execute(message,client,text);
               }
+              if(message.content.toLowerCase().startsWith("%urban")){
+                const text = message.content.split(' ')[1]
+                commands.urban.execute(message,client,text);
+                }
               if(message.content.toLowerCase().startsWith("%github")){
                 const text = message.content.split(' ')[1]
                 commands.github.execute(message,client,text);
