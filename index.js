@@ -3,7 +3,10 @@ const token = process.env.TOKEN;
 const commands = require(`./command.js`);
 const utils = require(`./utils.js`);
 const client = utils.log.login(token)
-const server = require('http').createServer();
+const server = require('http').createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.write('Hello World!');
+  res.end();});
 const port = process.env.PORT || 3000;
 
 server.listen(port, () => console.log(`Listening on ${port}`));
@@ -17,6 +20,8 @@ client.on('message', async (data) => {
   if (eventType === 'ChatMessageCreated') { //message create
     const message = eventData.message;
     message.utils=utils.msg;
+    message.channel=utils.msg;
+    message.channel.id=message.channelId 
     message.serverId=eventData.serverId;
     //console.log(message)
     if(message.content.toLowerCase()=="%meme"){
