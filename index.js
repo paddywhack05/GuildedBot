@@ -64,3 +64,6 @@ client.on('message', async (data) => {
     console.log(json)
   }
 });
+client.on('close', async function() {
+  console.log('disconnected from Guilded');
+});
