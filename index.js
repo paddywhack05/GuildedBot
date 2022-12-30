@@ -1,3 +1,4 @@
+async function start(){
 require("dotenv").config()
 const token = process.env.TOKEN;
 const commands = require(`./command.js`);
@@ -64,6 +65,9 @@ client.on('message', async (data) => {
     console.log(json)
   }
 });
-client.on('close', async function(code) {
-  console.log('disconnected from Guilded',code);
+client.on('close', async function(code,err) {
+  console.log('disconnected from Guilded',code,err);
+  start()
 });
+}
+start()
