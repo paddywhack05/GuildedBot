@@ -7,9 +7,7 @@ const cat = require(`./commands/cat.js`);
 const dog = require(`./commands/dog.js`);
 const github = require(`./commands/github.js`);
 const ping = require(`./commands/ping.js`);
-const help = require(`./commands/help.js`);
 const urban = require(`./commands/ub.js`);
-
 module.exports={
 meme,
 test,
@@ -20,6 +18,5 @@ cat,
 dog,
 github,
 ping,
-help,
 urban,
 }

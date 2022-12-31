@@ -1,6 +1,6 @@
 module.exports= {
     async execute(message,client){
-        const res = await message.utils.getUser(message)
+        const res = await message.channel.getUser(message)
         const data = await res.json()
         console.log(data)
         const embed =await{
@@ -11,6 +11,6 @@ module.exports= {
                 url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png'
             },
         }
-        await message.utils.sendEmbed(embed,message);
+        await message.channel.sendEmbed(embed);
     }
 }

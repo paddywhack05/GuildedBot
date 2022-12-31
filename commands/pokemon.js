@@ -2,15 +2,15 @@ const utils = require('../utils.js');
 const fetch = require('node-fetch');
 module.exports= {
     async execute(message,client,text){
-      if(!text) return message.utils.send("pick a pokemon",message);
+      if(!text) return message.channel.send("pick a pokemon");
 const url = `https://pokeapi.co/api/v2/pokemon/${text.toLowerCase()}`;
 const re = await fetch(`${url}`)
 console.log(re);
 if(re.status===200){
 const dat = await re.json()
-if(!dat){message.utils.send("that is not a pokemon see if you misspelled it",message); return;}
+if(!dat){message.channel.send("that is not a pokemon see if you misspelled it"); return;}
 console.log(dat)
-const res = await message.utils.getUser(message)
+const res = await message.channel.getUser(message)
 const data = await res.json()
 let e='';
 let a=0;
@@ -51,7 +51,7 @@ const embed = {
         {name:`${dat.stats[5].stat.name.charAt(0).toUpperCase() + dat.stats[5].stat.name.slice(1)}`,value:`${dat.stats[5].base_stat}`,inline:true},
     ],
    }
-   message.utils.sendEmbed(embed,message)
-}else{message.utils.send("that is not a pokemon see if you misspelled it",message); return;}
+   message.channel.sendEmbed(embed)
+}else{message.channel.send("that is not a pokemon see if you misspelled it"); return;}
 }
 }

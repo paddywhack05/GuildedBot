@@ -14,6 +14,6 @@ module.exports= {
             colour:16133127,
             footer:{text:`using cataas.com`},
         }
-        message.utils.sendEmbed(embed,message)
+        message.channel.sendEmbed(embed)
     }
 }

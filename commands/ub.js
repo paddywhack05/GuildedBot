@@ -2,13 +2,13 @@ const fetch = require('node-fetch');
 module.exports= {
     async execute(message,client,text){
         if(!text){
-            message.utils.send("You have to enter a term like \n %urban <term>",message); return;
+            message.channel.send("You have to enter a term like \n %urban <term>"); return;
         }
         const url = `https://api.urbandictionary.com/v0/define?term=${text}`;
                 const response = await fetch(`${url}`)
 const {list} = await response.json()
 const [dat] = list;
-       if(!dat){message.utils.send("that is not a word acording to Urban dictionary",message); return;}
+       if(!dat){message.channel.send("that is not a word acording to Urban dictionary"); return;}
 
         const embed = {
             title: `Definition of ${dat.word}`,
@@ -18,6 +18,6 @@ const [dat] = list;
                    {name:`Example`,value:dat.example}
         ]
            }
-           message.utils.sendEmbed(embed,message);
+           message.channel.sendEmbed(embed);
     }
 }

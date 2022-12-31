@@ -20,10 +20,13 @@ client.on('message', async (data) => {
   const {t: eventType, d: eventData} = json;
   if (eventType === 'ChatMessageCreated') { //message create
     const message = eventData.message;
-    message.utils=utils.msg;
+    message.reply = utils.msg.reply
+    message.react = utils.msg.react
+    message.edit = utils.msg.edit
+    message.editEmbed = utils.msg.editEmbed
+    message.createCollector = utils.collector.createCollector
     message.channel=utils.msg;
-    message.channel.id=message.channelId 
-    message.serverId=eventData.serverId;
+    message.channel.id=message.channelId
     //console.log(message)
     if(message.content.toLowerCase()=="%meme"){
         commands.meme.execute(message,client);

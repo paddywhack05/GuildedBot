@@ -11,6 +11,6 @@ module.exports= {
             colour:16133127,
             footer:{text:`using https://dog.ceo`},
         }
-        message.utils.sendEmbed(embed,message)
+        message.channel.sendEmbed(embed)
     }
 }

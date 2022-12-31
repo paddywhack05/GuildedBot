@@ -20,9 +20,9 @@ module.exports= {
           const embed2 = {
             image:{url:url2}
           }
-          await message.utils.sendEmbed(embed,message);
-          await message.utils.sendEmbed(embed2,message);
-          await message.utils.send(`you got ${ans}`,message)
+          await message.channel.sendEmbed(embed);
+          await message.channel.sendEmbed(embed2);
+          await message.channel.send(`you got ${ans}`)
     }
 }
 

@@ -17,6 +17,6 @@ module.exports= {
             url:`https://icanhazdadjoke.com/j/${dat.id}.png`,
             description:`${joke}`
            }
-           message.utils.sendEmbed(embed,message);
+           message.channel.sendEmbed(embed);
     }
 }

@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 module.exports= {
     async execute(message,client,text){
         if(!text){
-            message.utils.send("You have to type a name like \n %github <user>",message); return;
+            message.channel.send("You have to type a name like \n %github <user>"); return;
             }
             const url = `https://api.github.com/users/${text}`;
                     const res = await fetch(`${url}`)
@@ -11,7 +11,7 @@ module.exports= {
                     if(res.status===200){
                     const data = await res.json();
                     console.log(data)
-                    if(data.message){message.utils.send("that is not a github user see if you misspelled the name",message); return;};
+                    if(data.message){message.channel.send("that is not a github user see if you misspelled the name"); return;};
                     const embed ={
                         title: `${data.login.charAt(0).toUpperCase() + data.login.slice(1)}`,
                         url:`${data.html_url}`,
@@ -54,9 +54,9 @@ module.exports= {
                         //embed.addField(`🌐Blog`,`**[${data.blog}](${data.blog})**`,true)
                         embed.fields.push({name:`🌐Blog`,value:`**[${data.blog}](${data.blog})**`,inline:true})
                     }
-                    message.utils.sendEmbed(embed,message)
+                    message.channel.sendEmbed(embed)
 
 
-                    }else{message.utils.send("that is not a github user see if you misspelled the name",message); return;}
+                    }else{message.channel.send("that is not a github user see if you misspelled the name"); return;}
     }
 }
