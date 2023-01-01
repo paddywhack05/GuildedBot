@@ -28,7 +28,7 @@ module.exports= {
         
            const msg = await message.channel.sendEmbed(embed)
            await message.react('90002540',msg)
-           const collector = message.createCollector(client,message);
+           const collector = message.createCollector(client,msg);
            collector.on('collect',(rec)=>{
             console.log(rec)
             redditFetch({

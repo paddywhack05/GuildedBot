@@ -4,18 +4,16 @@ function createCollector(client,msg){
     client.on('message', async (data) => {
       const json = JSON.parse(data);
       const {t: eventType, d: eventData} = json;   
-        console.log(eventData)
-  if (eventType === 'ChannelMessageReactionCreated'){
-    //console.log(json)
-    //console.log(eventData)
-    if(eventData.reaction.createdBy===msg.createdBy)
+  if (eventType === 'ChannelMessageReactionCreated'||eventType === 'ChannelMessageReactionDeleted'){
+    console.log(eventData.reaction.messageId,msg.message.id)
+    if(eventData.reaction.messageId === msg.message.id){
+      console.log('we are hear',eventData.reaction.createdBy,msg.message.createdBy)
+    if(eventData.reaction.createdBy===this.createdBy){
+      console.log('efshdfsned')
     collector.emit('collect',(eventData))
-  }
-  else if (eventType === 'ChannelMessageReactionDeleted'){
-    //console.log(json)
-    //console.log(eventData)
-    if(eventData.reaction.createdBy===msg.createdBy){
-    collector.emit('collect',(eventData))
+    }else{
+      collector.emit('Filteractive',(eventData))
+    }
     }
   }
     });
