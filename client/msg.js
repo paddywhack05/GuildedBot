@@ -40,7 +40,7 @@ async function react(emoteId,msg){
 //channels/{channelId}/messages/{messageId}
 async function edit(str,msg){
   console.log(this.id,this)
-  const res = await fetch(`https://www.guilded.gg/api/v1/channels/${msg.message.channelId}/messages/${msg.id}`, {
+  const res = await fetch(`https://www.guilded.gg/api/v1/channels/${msg.message.channelId}/messages/${msg.message.id}`, {
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
