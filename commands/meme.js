@@ -30,6 +30,8 @@ module.exports= {
            await message.react('90002540',msg)
            const collector = message.createCollector(client,msg);
            collector.on('collect',(rec)=>{
+            if(msg.message.id === rec.reaction.messageId){
+              if(rec.reaction.createdBy===message.createdBy){
             console.log(rec)
             redditFetch({
                 subreddit:'memes',
@@ -54,6 +56,7 @@ module.exports= {
                }
                message.editEmbed(embed,msg)
             })
+          }}
            })
         })
            
