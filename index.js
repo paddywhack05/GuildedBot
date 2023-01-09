@@ -75,6 +75,7 @@ client.on('message', async (data) => {
     console.log(json)
   }
 });
+//dev comit test
 client.on('close', async function(code,err) {
   console.log('disconnected from Guilded',code,err);
   start()
