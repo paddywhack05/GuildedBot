@@ -3,6 +3,7 @@ const test = require(`./commands/test.js`);
 const dice = require(`./commands/dice.js`);
 const dadjoke = require(`./commands/dadjoke.js`);
 const pokemon = require(`./commands/pokemon.js`);
+const help = require(`./commands/help.js`);
 const cat = require(`./commands/cat.js`);
 const dog = require(`./commands/dog.js`);
 const github = require(`./commands/github.js`);
@@ -21,4 +22,5 @@ github,
 ping,
 urban,
 trivia,
+help,
 }
