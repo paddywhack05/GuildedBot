@@ -15,6 +15,10 @@ server.listen(port, () => console.log(`Listening on ${port}`));
 client.on('open', async function() {
   //console.log('connected to Guilded!',client);
 });
+process.on('uncaughtException', err => {
+  //I know its bad practice aaaaaaaaaaaaaaaaaaaaaaaaa
+  console.error(err, 'Uncaught Exception thrown');
+});
 client.on('message', async (data) => {
   const json = JSON.parse(data);
   const {t: eventType, d: eventData} = json;
@@ -52,6 +56,9 @@ client.on('message', async (data) => {
                   if(message.content.toLowerCase()=="%help"){
                     commands.help.execute(message,client);
                     }
+                    if(message.content.toLowerCase()=="%trivia"){
+                      commands.trivia.execute(message,client);
+                      }
             if(message.content.toLowerCase().startsWith("%pokemon")){
               const text = message.content.split(' ')[1]
               commands.pokemon.execute(message,client,text);

@@ -8,6 +8,7 @@ const dog = require(`./commands/dog.js`);
 const github = require(`./commands/github.js`);
 const ping = require(`./commands/ping.js`);
 const urban = require(`./commands/ub.js`);
+const trivia = require(`./commands/trivia.js`);
 module.exports={
 meme,
 test,
@@ -19,4 +20,5 @@ dog,
 github,
 ping,
 urban,
+trivia,
 }
