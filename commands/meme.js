@@ -19,6 +19,7 @@ module.exports= {
             image: {
                 url: post.url
               },
+              color: '#f70000',
               author: {
                 name: post.author,
                 url: `https://www.reddit.com/user/${post.author}`,

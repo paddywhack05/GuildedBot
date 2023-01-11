@@ -129,6 +129,14 @@ async function reply(content){
 }
 async function sendEmbed(obj){
   console.log(obj)
+  async function hexToDec(hexStr){
+    if(hexStr.isNaN){return(hexStr)}
+ var hexNumber = await hexStr.substring(1)||obj.colour.substring(1);
+ var intNumber = await parseInt(hexNumber, 16);
+ return(intNumber);
+  }
+  const colour = await hexToDec(obj.color??obj.colour)
+  console.log(obj)
   const res = await fetch(`https://www.guilded.gg/api/v1/channels/${this.id}/messages`, {
         method: 'POST',
         headers: {
@@ -140,7 +148,7 @@ async function sendEmbed(obj){
             title: obj.title,
             description: obj.description,
             url:obj.url,
-            color:obj.color||obj.colour,
+            color:await colour,
             image:obj.image,
               author: obj.author,
               thumbnail: obj.thumbnail,
