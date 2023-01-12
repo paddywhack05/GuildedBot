@@ -19,6 +19,7 @@ module.exports= {
             image: {
                 url: post.url
               },
+              color: '#ff0000',
               author: {
                 name: post.author,
                 url: `https://www.reddit.com/user/${post.author}`,
@@ -45,6 +46,7 @@ module.exports= {
                const embed = {
                 title: post.title,
                 url:`https://redd.it/${post.id}`,
+                color: '#ff0000',
                 image: {
                     url: post.url
                   },
