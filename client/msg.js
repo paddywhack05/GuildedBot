@@ -55,6 +55,13 @@ async function edit(str,msg){
 }
 async function editEmbed(obj,msg){
   console.log(msg)
+  async function hexToDec(hexStr){
+    if(!isNaN(hexStr)){return(await parseInt(hexStr))}
+ var hexNumber = await hexStr.substring(1)||obj.colour.substring(1);
+ var intNumber = await parseInt(hexNumber, 16);
+ return(intNumber);
+  }
+  const colour = await hexToDec(obj.color??obj.colour)
   const res = await fetch(`https://www.guilded.gg/api/v1/channels/${msg.message.channelId}/messages/${msg.message.id}`, {
     method: 'PUT',
     headers: {
@@ -66,7 +73,7 @@ async function editEmbed(obj,msg){
         title: obj.title,
         description: obj.description,
         url:obj.url,
-        color:obj.color||obj.colour,
+        color:await colour,
         image:obj.image,
           author: obj.author,
           thumbnail: obj.thumbnail,
@@ -130,7 +137,7 @@ async function reply(content){
 async function sendEmbed(obj){
   console.log(obj)
   async function hexToDec(hexStr){
-    if(hexStr.isNaN){return(hexStr)}
+    if(!isNaN(hexStr)){return(await parseInt(hexStr))}
  var hexNumber = await hexStr.substring(1)||obj.colour.substring(1);
  var intNumber = await parseInt(hexNumber, 16);
  return(intNumber);
