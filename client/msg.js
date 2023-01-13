@@ -137,10 +137,12 @@ async function reply(content){
 async function sendEmbed(obj){
   console.log(obj)
   async function hexToDec(hexStr){
+    if(hexStr){
     if(!isNaN(hexStr)){return(await parseInt(hexStr))}
  var hexNumber = await hexStr.substring(1)||obj.colour.substring(1);
  var intNumber = await parseInt(hexNumber, 16);
  return(intNumber);
+    }return 0
   }
   const colour = await hexToDec(obj.color??obj.colour)
   console.log(obj)
@@ -168,7 +170,17 @@ async function sendEmbed(obj){
       const data = await res.json();
       return data;
 }
-async function getUser(message){
+async function getUser(message,userid){
+  if(userid){  
+    const res = await fetch(`https://www.guilded.gg/api/v1/servers/${message.serverId}/members/@paddycrack`, {//${userid}
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+  }); 
+  return res;
+}
   const res = await fetch(`https://www.guilded.gg/api/v1/servers/${message.serverId}/members/${message.createdBy}`, {
       method: 'GET',
       headers: {

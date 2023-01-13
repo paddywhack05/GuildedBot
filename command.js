@@ -11,6 +11,7 @@ const ping = require(`./commands/ping.js`);
 const urban = require(`./commands/ub.js`);
 const trivia = require(`./commands/trivia.js`);
 const covid = require(`./commands/covid.js`);
+const userinfo = require(`./commands/userinfo.js`);
 module.exports={
 meme,
 test,
@@ -25,4 +26,5 @@ urban,
 trivia,
 help,
 covid,
+userinfo,
 }
