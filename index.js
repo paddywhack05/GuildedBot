@@ -59,6 +59,9 @@ client.on('message', async (data) => {
                     if(message.content.toLowerCase()=="%trivia"){
                       commands.trivia.execute(message,client);
                       }
+                      if(message.content.toLowerCase()=="%covid"){
+                        commands.covid.execute(message,client);
+                        }
             if(message.content.toLowerCase().startsWith("%pokemon")){
               const text = message.content.split(' ')[1]
               commands.pokemon.execute(message,client,text);

@@ -10,6 +10,7 @@ const github = require(`./commands/github.js`);
 const ping = require(`./commands/ping.js`);
 const urban = require(`./commands/ub.js`);
 const trivia = require(`./commands/trivia.js`);
+const covid = require(`./commands/covid.js`);
 module.exports={
 meme,
 test,
@@ -23,4 +24,5 @@ ping,
 urban,
 trivia,
 help,
+covid,
 }
