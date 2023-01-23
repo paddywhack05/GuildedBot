@@ -172,7 +172,7 @@ async function sendEmbed(obj){
 }
 async function getUser(message,userid){
   if(userid){  
-    const res = await fetch(`https://www.guilded.gg/api/v1/servers/${message.serverId}/members/@paddycrack`, {//${userid}
+    const res = await fetch(`https://www.guilded.gg/api/v1/servers/${message.serverId}/members/${userid}`, {//${userid}
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,

@@ -62,6 +62,9 @@ client.on('message', async (data) => {
                       if(message.content.toLowerCase()=="%covid"){
                         commands.covid.execute(message,client);
                         }
+                        if(message.content.toLowerCase()=="%chuck"||message.content.toLowerCase()=="%chucknorris"){
+                          commands.chucknorris.execute(message,client);
+                          }
             if(message.content.toLowerCase().startsWith("%pokemon")){
               const text = message.content.split(' ')[1]
               commands.pokemon.execute(message,client,text);
@@ -71,8 +74,14 @@ client.on('message', async (data) => {
                 commands.urban.execute(message,client,text);
                 }
                 if(message.content.toLowerCase().startsWith("%userinfo")){
-                  const text = message.mentions.user;
-                  commands.userinfo.execute(message,client,text);
+                  if(message.mentions){
+                    console.log(message.mentions)
+                    const text = message.mentions.user;
+                    commands.userinfo.execute(message,client,text);
+                  }else{
+                    const text = message.createdBy;
+                    commands.userinfo.execute(message,client,text);
+                  }
                   }
               if(message.content.toLowerCase().startsWith("%github")){
                 const text = message.content.split(' ')[1]

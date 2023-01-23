@@ -5,12 +5,9 @@ module.exports= {
         console.log(text)
         console.log(data)
         const embed =await{
-            title: "test",
-            description:"test",
+            title: "userinfo",
+            description:"abcdefg",
             author:{name:data.member.user.name},
-            image:{
-                url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png'
-            },
         }
         await message.channel.sendEmbed(embed);
     }
