@@ -64,7 +64,7 @@ client.on('message', async (data) => {
                         }
                         if(message.content.toLowerCase()=="%chuck"||message.content.toLowerCase()=="%chucknorris"){
                           commands.chucknorris.execute(message,client);
-                          }
+                          }//tgtgg
             if(message.content.toLowerCase().startsWith("%pokemon")){
               const text = message.content.split(' ')[1]
               commands.pokemon.execute(message,client,text);
