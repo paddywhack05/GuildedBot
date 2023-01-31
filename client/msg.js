@@ -13,6 +13,8 @@ async function sendImage(link,message){
   const data = await res.json();
   return data;
 }
+
+
 async function react(emoteId,msg){
   if(msg){
     console.log('sdsdsd',msg)
@@ -37,6 +39,8 @@ async function react(emoteId,msg){
  //console.log(res);
 }
 }
+
+
 //channels/{channelId}/messages/{messageId}
 async function edit(str,msg){
   console.log(this.id,this)
@@ -53,6 +57,8 @@ async function edit(str,msg){
   const data = await res.json();
   return data;
 }
+
+
 async function editEmbed(obj,msg){
   console.log(msg)
   async function hexToDec(hexStr){
@@ -86,8 +92,25 @@ async function editEmbed(obj,msg){
   const data = await res.json();
   return data;
 }
+
+
 async function send(str,message){
   console.log(this.id,this)
+  if(typeof str === 'object' && yourVariable !== null){
+    const res = await fetch(`https://www.guilded.gg/api/v1/channels/${this.id}/messages`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        mentions:str.mentions,
+        content: str.content,
+      }),
+    })
+    const data = await res.json();
+    return data;
+  }else{
   const res = await fetch(`https://www.guilded.gg/api/v1/channels/${this.id}/messages`, {
     method: 'POST',
     headers: {
@@ -101,6 +124,9 @@ async function send(str,message){
   const data = await res.json();
   return data;
 }
+}
+
+
 async function reply(content){
   console.log(content,this.id)
   if(typeof content ==='object'){
@@ -134,6 +160,8 @@ async function reply(content){
   return data;
 }
 }
+
+
 async function sendEmbed(obj){
   console.log(obj)
   async function hexToDec(hexStr){
@@ -153,6 +181,7 @@ async function sendEmbed(obj){
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
+          mentions:obj.mentions,
           embeds: [{
             title: obj.title,
             description: obj.description,
@@ -170,6 +199,18 @@ async function sendEmbed(obj){
       const data = await res.json();
       return data;
 }
+
+async function getServer(serverId){
+    const res = await fetch(`https://www.guilded.gg/api/v1/servers/${serverId}`, {//${userid}
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+  }); 
+  return res;
+}
+
 async function getUser(message,userid){
   if(userid){  
     const res = await fetch(`https://www.guilded.gg/api/v1/servers/${message.serverId}/members/${userid}`, {//${userid}
@@ -191,6 +232,7 @@ async function getUser(message,userid){
     return res;
 }
 module.exports= {
+getServer,
 getUser,
 send,
 sendEmbed,
