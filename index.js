@@ -31,7 +31,7 @@ client.on('message', async (data) => {
     message.createCollector = utils.collector.createCollector
     message.channel=utils.msg;
     message.channel.id=message.channelId
-    console.log(message)
+    //console.log(message)
     if(message.content.toLowerCase()=="%meme"){
         commands.meme.execute(message,client);
         } 
@@ -74,9 +74,10 @@ client.on('message', async (data) => {
                 commands.urban.execute(message,client,text);
                 }
                 if(message.content.toLowerCase().startsWith("%userinfo")){
+                  console.log(message.mentions)
                   if(message.mentions){
-                    console.log(message.mentions)
-                    const text = message.mentions.user;
+                    console.log(message.mentions,'sdsdsdsddsdssdsd')
+                    const text = message.mentions.users[0].id;
                     commands.userinfo.execute(message,client,text);
                   }else{
                     const text = message.createdBy;
