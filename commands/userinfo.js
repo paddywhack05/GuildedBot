@@ -17,10 +17,15 @@ module.exports= {
             thumbnail:{
                 url: data.member.user.avatar,
               },
-
+                fields:[],
               description:`${data.member.user.name} joined ${data2.server.name} at ${moment(data.member.joinedAt).format('YYYY/MM/DD')} and ${data.member.user.name} joined guilded at ${moment(data.member.user.createdAt).format('YYYY/MM/DD')}`,
-            fields:[{name:`Roles[${data.member.roleIds.length}]`,value:`${await roles}`,//servers/{serverId}
-            }],
+           
+        }
+        console.log(data.member.roleIds.length)
+        if(await data.member.roleIds.length){
+            embed.fields.push({name:`Roles[${data.member.roleIds.length}]`,value:`${await roles}`,})
+        }else{
+            embed.fields.push({name:`Roles[0]`,value:`no roles🤨`,})
         }
         await message.channel.sendEmbed(embed);
     }
