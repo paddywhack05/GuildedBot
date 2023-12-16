@@ -25,8 +25,9 @@ async function react(emoteId,msg){
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     },
+    
   })
- //console.log(res);
+ console.log(res);
 }else{
   const res = await fetch(`https://www.guilded.gg/api/v1/channels/${this.channel.id}/content/${this.id}/emotes/${emoteId}`, {
     //:white_check_mark:

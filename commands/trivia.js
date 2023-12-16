@@ -57,17 +57,20 @@ else if(num === 4){
 }
 
 const msg = await message.channel.sendEmbed(embed)
-await message.react('90002199',msg)
-await message.react('90002200',msg)
-await message.react('90002201',msg)
-await message.react('90002202',msg)
+const rec1 =await message.react('90002199',msg)
+const rec2 = await message.react('90002200',msg)
+const rec3 =await message.react('90002201',msg)
+const rec4 =await message.react('90002202',msg)
 console.log(cor)
 const collector = message.createCollector(client,msg);
-collector.on('collect',(rec)=>{
+console.log(msg)
+collector.on('collect',async (func)=>{
+    const rec = await func;
+    console.log(rec,'dfgghhfdhf')
     if(msg.message.id === rec.reaction.messageId){
         if(rec.reaction.createdBy===message.createdBy){
     let ans;
-    console.log(rec)
+    console.log(rec.reaction.emote)
     switch(rec.reaction.emote.name) {
         case 'one':
           ans = 1
@@ -85,7 +88,7 @@ collector.on('collect',(rec)=>{
             ans = 1
     }      
 
-    console.log(rec)
+   // console.log(rec)
     const embed = {
         title: `wrong`,
         description:`${cor} was correct`,
@@ -96,7 +99,10 @@ collector.on('collect',(rec)=>{
         description:`${cor} was correct yo are cool😎`,
         colour:4120402,
     }
-    console.log(cor,ans)
+   //console.log(cor,ans)
+    //console.log(obj.callback)
+   //await collector.removeListener('collect',await func)
+   collector.emit('stop')
     if(cor===ans){
         return message.channel.editEmbed(correct,msg)
     }else{
