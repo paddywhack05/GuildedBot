@@ -86,6 +86,10 @@ collector.on('collect',(rec)=>{
     }      
 
     console.log(rec)
+ message.unreact('90002199',msg)
+ message.unreact('90002200',msg)
+ message.unreact('90002201',msg)
+ message.unreact('90002202',msg)
     const embed = {
         title: `wrong`,
         description:`${cor} was correct`,
