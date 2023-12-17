@@ -12,7 +12,6 @@ var res = await fetch(`${url}&encode=base64`)
 
 const data = await res.json()
 console.log(data)
-//you can use this just gib credit to paddycrack weeeeeeeeeeee
 const wrong1 = Buffer.from(data.results[0].incorrect_answers[0].toString(), 'base64').toString('utf8')
 const wrong2 = Buffer.from(data.results[0].incorrect_answers[1].toString(), 'base64').toString('utf8')
 const wrong3 = Buffer.from(data.results[0].incorrect_answers[2].toString(), 'base64').toString('utf8')
@@ -102,7 +101,10 @@ collector.on('collect',async (func)=>{
    //console.log(cor,ans)
     //console.log(obj.callback)
    //await collector.removeListener('collect',await func)
-   collector.emit('stop')
+   message.unreact('90002199',msg)
+   message.unreact('90002200',msg)
+   message.unreact('90002201',msg)
+   message.unreact('90002202',msg)
     if(cor===ans){
         return message.channel.editEmbed(correct,msg)
     }else{

@@ -11,6 +11,7 @@ module.exports= {
                 url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/783px-Test-Logo.svg.png'
             },
         }
-        await message.channel.sendEmbed(embed);
+       const msg = await message.channel.sendEmbed(embed);
+        const rec1 =await message.react(90002199,msg)
     }
 }

@@ -18,18 +18,17 @@ async function sendImage(link,message){
 async function react(emoteId,msg){
   if(msg){
     console.log('sdsdsd',msg)
-    const res = await fetch(`https://www.guilded.gg/api/v1/channels/${msg.message.channelId}/content/${msg.message.id}/emotes/${emoteId}`, {
+    const res = await fetch(`https://www.guilded.gg/api/v1/channels/${msg.message.channelId}/messages/${msg.message.id}/emotes/${emoteId}`, {
     //:white_check_mark:
     method: 'PUT',
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json"
     },
-    
   })
  console.log(res);
 }else{
-  const res = await fetch(`https://www.guilded.gg/api/v1/channels/${this.channel.id}/content/${this.id}/emotes/${emoteId}`, {
+  const res = await fetch(`https://www.guilded.gg/api/v1/channels/${this.channel.id}/messages/${this.id}/emotes/${emoteId}`, {
     //:white_check_mark:
     method: 'PUT',
     headers: {
@@ -40,6 +39,32 @@ async function react(emoteId,msg){
  //console.log(res);
 }
 }
+
+async function unreact(emoteId,msg){
+  if(msg){
+    console.log('sdsdsd',msg)
+    const res = await fetch(`https://www.guilded.gg/api/v1/channels/${msg.message.channelId}/messages/${msg.message.id}/emotes/${emoteId}`, {
+    //:white_check_mark:
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+  })
+ console.log(res);
+}else{
+  const res = await fetch(`https://www.guilded.gg/api/v1/channels/${this.channel.id}/messages/${this.id}/emotes/${emoteId}`, {
+    //:white_check_mark:
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+  })
+ //console.log(res);
+}
+}
+
 
 
 //channels/{channelId}/messages/{messageId}
@@ -242,4 +267,5 @@ reply,
 react,
 edit,
 editEmbed,
+unreact,
 }

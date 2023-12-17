@@ -26,6 +26,7 @@ client.on('message', async (data) => {
     const message = eventData.message;
     message.reply = utils.msg.reply
     message.react = utils.msg.react
+    message.unreact = utils.msg.unreact
     message.edit = utils.msg.edit
     message.editEmbed = utils.msg.editEmbed
     message.createCollector = utils.collector.createCollector

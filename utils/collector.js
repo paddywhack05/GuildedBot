@@ -14,7 +14,7 @@ function createCollector(client,msg){
      // console.log('we are hear',eventData.reaction.createdBy,msg.message.createdBy)
     if(eventData.reaction.createdBy===this.createdBy){
       async function stop(){
-        collector.removeListener('collect',eventfired)
+        collector.removeListener('collect',eventfired,)
       }
       async function eventfired(data){
         console.log(data)
@@ -22,7 +22,7 @@ function createCollector(client,msg){
       }
       //console.log('efshdfsned')
       collector.on('stop',stop)
-    collector.emit('collect',eventfired(eventData))
+    collector.emit('collect',eventfired(eventData),{once:true})
     }else{
       collector.emit('filterActive',(eventData))
     }
