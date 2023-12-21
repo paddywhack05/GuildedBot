@@ -4,6 +4,7 @@ module.exports= {
     name: "meme",
     description:"test",
     async execute(message,client){
+      try{
         redditFetch({
             subreddit:'memes',
             sort: 'top',
@@ -62,6 +63,8 @@ module.exports= {
           }}
            })
         })
-           
+      }catch(err) {
+        console.log("fuck ",err)
+      }
     }
 }
