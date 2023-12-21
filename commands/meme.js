@@ -32,6 +32,7 @@ module.exports= {
            const collector = message.createCollector(client,msg);
            collector.on('collect',(rec)=>{
             if(msg.message.id === rec.reaction.messageId){
+              console.log("working")
               if(rec.reaction.createdBy===message.createdBy){
             console.log(rec)
             redditFetch({
