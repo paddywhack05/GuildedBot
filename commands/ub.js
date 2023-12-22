@@ -16,7 +16,8 @@ const [dat] = list;
             fields:[
                    {name:`Definition`,value:dat.definition},
                    {name:`Example`,value:dat.example}
-        ]
+        ],
+        footer:{text:`👍${dat.thumbs_up}  👎${dat.thumbs_down}`},
            }
            message.channel.sendEmbed(embed);
     }
