@@ -1,24 +1,21 @@
 const redditFetch = require('reddit-fetch/src/redditFetch');
+const justreddit = require("justreddit");
 const utils = require('../utils.js')
 module.exports= {
-    name: "meme",
+    name: "newmeme",
     description:"test",
     async execute(message,client){
-      try{
-        redditFetch({
-            subreddit:'memes',
-            sort: 'top',
-            allowNSFW: false,
-           allowCrossPost: true,
-            allowVideo: true,
-            allowModPost: false,
-           }).then(async post => {
+        justreddit.randomPostFromSub({
+            subReddit:"memes",
+            sortType:"top"
+        }).then(async post => {
+            console.log("this shit work");
            const userimg = await utils.reddit.getUserAvatar(post.author);
            const embed = {
             title: post.title,
             url:`https://redd.it/${post.id}`,
             image: {
-                url: post.url
+                url: post.image
               },
               color: '#ff0000',
               author: {
@@ -36,14 +33,11 @@ module.exports= {
               console.log("working")
               if(rec.reaction.createdBy===message.createdBy){
             console.log(rec)
-            redditFetch({
-                subreddit:'memes',
-                sort: 'top',
-                allowNSFW: false,
-               allowCrossPost: true,
-                allowVideo: true,
-                allowModPost: false,
-               }).then(async post => {
+            justreddit.randomPostFromSub({
+                subReddit:"memes",
+                sortType:"top"
+            }).then(async post => {
+                console.log("this shit work");
                const userimg = await utils.reddit.getUserAvatar(post.author);
                const embed = {
                 title: post.title,
@@ -63,8 +57,6 @@ module.exports= {
           }}
            })
         })
-      }catch(err) {
-        console.log("fuck ",err)
-      }
+           
     }
 }
